@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        // 强制分号结尾
+        "semi": [
+            2,
+            "always"
+        ],
+        // 禁止空格和tab混用
+        "no-mixed-spaces-and-tabs": [
+            2,
+            false
+        ]
+    }
+}
