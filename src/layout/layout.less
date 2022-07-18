@@ -1,0 +1,50 @@
+@import '~antd/dist/antd.css';
+
+.site-layout-sub-header-background {
+    background: #fff;
+}
+
+.site-layout-background {
+    background: #fff;
+}
+
+#root .ant-layout {
+    width: 100vw;
+    height: 100vh;
+}
+
+#root {
+    .ant-layout {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+// sider-shadow
+.ant-layout-sider {
+    box-shadow: .0375rem .0375rem .0375rem rgba(128, 128, 128, .3);
+}
+
+.ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+}
+
+// header
+.ant-layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .0625rem .1875rem 0 .1875rem;
+    box-shadow: .0375rem .0375rem .0375rem rgba(128, 128, 128, .3);
+
+    .content {
+        margin-left: .1875rem;
+        font-size: .25rem;
+        font-weight: 800;
+    }
+
+    .action {
+        margin-right: .1875rem;
+    }
+}
