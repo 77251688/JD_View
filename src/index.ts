@@ -4,6 +4,7 @@ import * as bodyParser from "body-parser";
 import { port } from "../setting";
 import { router } from "../router";
 import { start } from "../cron";
+import sys from "../system";
 const app = express();
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,3 +17,4 @@ app.listen(port, () => {
     console.log(`running at ${port} port`);
 });
 start();
+sys();

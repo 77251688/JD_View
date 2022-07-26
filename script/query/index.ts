@@ -1,6 +1,6 @@
 import * as path from "path";
 import fetch from "node-fetch";
-import { readdirSync, mkdirSync, readFileSync } from "fs";
+import { readdirSync, mkdirSync } from "fs";
 import { getenv, disabled } from "../../file";
 import { check } from "../checkCookie";
 import { Init, Timestamp, ReturnFile, Write } from "../../utils";
@@ -19,10 +19,9 @@ interface IntrType {
 export class Inquire {
     public static async inquire() {
         try {
-            const beanurl = `https://api.m.jd.com/?functionId=jingBeanDetail&clientVersion=10.0.8&client=android&uuid=e579e5683157084a&st=1655446439789&sign=f94109905b3478251a6d1a084bce8288&sv=110&body={%22pageNo%22%3A1%2C%22pageSize%22%3A20}`;
+            const beanurl = `https://api.m.jd.com/client.action?functionId=personinfoBusiness&clientVersion=10.0.8&client=android&uuid=e579e5683157084a&st=1658505276610&sign=3f5cdfdd13f20bbd5116d87d295bcbe4&sv=100&body=%7B%22callCJH%22:%221%22,%22callNPS%22:%221%22,%22closeJX%22:%220%22,%22locationArea%22:%220_0_0_0%22,%22menuStaticSource%22:%220%22,%22menuTimeStamp%22:%221624274226499%22,%22refreshEnable%22:%221%22%7D`;
             const env = getenv.env();
             const cookieArr = env.filter((e: eType) => e.name === "JD_COOKIE");
-            console.log(cookieArr);
             cookieArr.forEach(async e => {
                 const username = await check.c(e.val);
                 if (!username) {
@@ -34,10 +33,11 @@ export class Inquire {
                         headers: {
                             cookie: e.val
                         },
-                        body: JSON.stringify({ "pageNo": 1, "pageSize": 20 })
+                        // body: JSON.stringify({ "pageNo": 1, "pageSize": 20 })
                     });
                     const data = await data_.json();
-                    const beans = data.others.jingBeanBalance.jingBeanCount;
+                    // const beans = data.others.jingBeanBalance.jingBeanCount;
+                    const beans = data.floors[3].data.encStr.jindou.numContent;
                     const month = Timestamp.month();
                     const day = Timestamp.day();
                     const files = readdirSync(path.join(__dirname, "../../db/data"));
